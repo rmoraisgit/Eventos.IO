@@ -3,9 +3,47 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Presentation", "1 - Presentation", "{63F52782-B21B-4FAE-A499-CC35F2F64E1B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Services", "2 - Services", "{386FB0F4-4F11-4BC5-8930-A036C1FC33AF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Application", "3 - Application", "{89D0417B-F5E5-4105-BAFE-A3252859EF4A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Domain", "4 - Domain", "{59758298-2B97-42D7-8A54-71A935FEA9E0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Infra", "5 - Infra", "{D6BDB393-F7C9-4BE5-89D2-779376C32A56}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.1 - Data", "5.1 - Data", "{0B3455F7-1DC7-4560-885D-2B17F58DEE6C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.2 - CrossCutting", "5.2 - CrossCutting", "{FE44A387-0FF1-4239-8F00-1ED964BE3332}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RFL.Eventos.IO.Domain", "src\RFL.Eventos.IO.Domain\RFL.Eventos.IO.Domain.csproj", "{B417248B-E2CE-40DB-ABE4-4DA54E6499E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RFL.Eventos.IO.Domain.Core", "src\RFL.Eventos.IO.Domain.Core\RFL.Eventos.IO.Domain.Core.csproj", "{B34460E5-653F-4610-9CD3-DD8F7289DA1B}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B417248B-E2CE-40DB-ABE4-4DA54E6499E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B417248B-E2CE-40DB-ABE4-4DA54E6499E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B417248B-E2CE-40DB-ABE4-4DA54E6499E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B417248B-E2CE-40DB-ABE4-4DA54E6499E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B34460E5-653F-4610-9CD3-DD8F7289DA1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B34460E5-653F-4610-9CD3-DD8F7289DA1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B34460E5-653F-4610-9CD3-DD8F7289DA1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B34460E5-653F-4610-9CD3-DD8F7289DA1B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0B3455F7-1DC7-4560-885D-2B17F58DEE6C} = {D6BDB393-F7C9-4BE5-89D2-779376C32A56}
+		{FE44A387-0FF1-4239-8F00-1ED964BE3332} = {D6BDB393-F7C9-4BE5-89D2-779376C32A56}
+		{B417248B-E2CE-40DB-ABE4-4DA54E6499E9} = {59758298-2B97-42D7-8A54-71A935FEA9E0}
+		{B34460E5-653F-4610-9CD3-DD8F7289DA1B} = {59758298-2B97-42D7-8A54-71A935FEA9E0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F7E83FBD-821A-4918-AE85-ABCCC95991F6}
