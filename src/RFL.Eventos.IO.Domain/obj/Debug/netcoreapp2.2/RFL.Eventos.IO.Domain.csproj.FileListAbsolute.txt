@@ -1,0 +1,5 @@
+C:\Users\Rafael\Desktop\_Projetos\RFL.Eventos.IO\src\RFL.Eventos.IO.Domain\bin\Debug\netcoreapp2.2\RFL.Eventos.IO.Domain.Core.dll
+C:\Users\Rafael\Desktop\_Projetos\RFL.Eventos.IO\src\RFL.Eventos.IO.Domain\obj\Debug\netcoreapp2.2\RFL.Eventos.IO.Domain.csprojAssemblyReference.cache
+C:\Users\Rafael\Desktop\_Projetos\RFL.Eventos.IO\src\RFL.Eventos.IO.Domain\obj\Debug\netcoreapp2.2\RFL.Eventos.IO.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Rafael\Desktop\_Projetos\RFL.Eventos.IO\src\RFL.Eventos.IO.Domain\obj\Debug\netcoreapp2.2\RFL.Eventos.IO.Domain.AssemblyInfoInputs.cache
+C:\Users\Rafael\Desktop\_Projetos\RFL.Eventos.IO\src\RFL.Eventos.IO.Domain\obj\Debug\netcoreapp2.2\RFL.Eventos.IO.Domain.AssemblyInfo.cs
