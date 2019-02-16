@@ -15,13 +15,13 @@ namespace RFL.Eventos.IO.Domain.Eventos.Commands
            bool online,
            string nomeEmpresa)
         {
-            Id = Guid.NewGuid();
             Nome = nome;
             DataInicio = dataInicio;
             DataFim = dataFim;
             Gratuito = gratuito;
             Valor = valor;
             Online = online;
+            NomeEmpresa = nomeEmpresa;
         }
     }
 }
