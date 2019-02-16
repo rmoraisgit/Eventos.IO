@@ -6,12 +6,13 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v2.2": {
-      "RFL.Eventos.IO.Domain.Core/1.0.0": {
+      "RFL.Eventos.IO.Domain/1.0.0": {
         "dependencies": {
-          "FluentValidation": "8.1.3"
+          "FluentValidation": "8.1.3",
+          "RFL.Eventos.IO.Domain.Core": "1.0.0"
         },
         "runtime": {
-          "RFL.Eventos.IO.Domain.Core.dll": {}
+          "RFL.Eventos.IO.Domain.dll": {}
         }
       },
       "FluentValidation/8.1.3": {
@@ -25,11 +26,19 @@
           }
         }
       },
-      "System.ComponentModel.Annotations/4.4.1": {}
+      "System.ComponentModel.Annotations/4.4.1": {},
+      "RFL.Eventos.IO.Domain.Core/1.0.0": {
+        "dependencies": {
+          "FluentValidation": "8.1.3"
+        },
+        "runtime": {
+          "RFL.Eventos.IO.Domain.Core.dll": {}
+        }
+      }
     }
   },
   "libraries": {
-    "RFL.Eventos.IO.Domain.Core/1.0.0": {
+    "RFL.Eventos.IO.Domain/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -47,6 +56,11 @@
       "sha512": "sha512-/8XSRz3cgSSPEdiV6UFhlfk6/FX9P10MAja4XPCyMCz7/0YTqjtCh4e0jjLYOCJL8jK7O/vhtUjYo1TOSuPngQ==",
       "path": "system.componentmodel.annotations/4.4.1",
       "hashPath": "system.componentmodel.annotations.4.4.1.nupkg.sha512"
+    },
+    "RFL.Eventos.IO.Domain.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

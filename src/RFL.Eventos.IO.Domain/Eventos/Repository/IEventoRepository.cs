@@ -7,5 +7,6 @@ namespace RFL.Eventos.IO.Domain.Eventos.Repository
 {
     public interface IEventoRepository : IRepository<Evento>
     {
+
     }
 }
