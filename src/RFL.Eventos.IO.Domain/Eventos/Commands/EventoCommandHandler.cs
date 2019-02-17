@@ -1,4 +1,6 @@
-﻿using RFL.Eventos.IO.Domain.Core.Events;
+﻿using RFL.Eventos.IO.Domain.Core.Bus;
+using RFL.Eventos.IO.Domain.Core.Events;
+using RFL.Eventos.IO.Domain.Eventos.Events;
 using RFL.Eventos.IO.Domain.Eventos.Repository;
 using RFL.Eventos.IO.Domain.Handlers;
 using RFL.Eventos.IO.Domain.Interfaces;
@@ -9,16 +11,20 @@ using System.Text;
 namespace RFL.Eventos.IO.Domain.Eventos.Commands
 {
     public class EventoCommandHandler : CommandHandler,
-        IHandler<RegistrarEventoCommand>
+        IHandler<RegistrarEventoCommand>,
+        IHandler<AtualizarEventoCommand>
     {
         private readonly IEventoRepository _eventoRepository;
         private readonly IUnitOfWork _uow;
+        private readonly IBus _bus;
 
         public EventoCommandHandler(IEventoRepository eventoRepository,
-                                    IUnitOfWork uow) : base(uow)
+                                    IUnitOfWork uow,
+                                    IBus bus) : base(uow)
         {
             _eventoRepository = eventoRepository;
             _uow = uow;
+            _bus = bus;
         }
 
         public void Handle(RegistrarEventoCommand message)
@@ -26,17 +32,43 @@ namespace RFL.Eventos.IO.Domain.Eventos.Commands
             var evento = new Evento(message.Nome, message.DataInicio, message.DataFim,
                                     message.Gratuito, message.Valor, message.Online, message.NomeEmpresa);
 
-            if (!evento.EhValido())
-            {
-                NotificarValidacoesErro(evento.ValidationResult);
-            }
+            if (!EventoValido(evento)) return;
 
             _eventoRepository.Adicionar(evento);
 
             if (Commit())
             {
-                // Notificar processo concluído
+                _bus.RaiseEvent(new EventoRegistradoEvent(evento.Id, evento.Nome, evento.DataInicio, evento.DataFim,
+                                    evento.Gratuito, evento.Valor, evento.Online, evento.NomeEmpresa));
             }
+        }
+
+        public void Handle(AtualizarEventoCommand message)
+        {
+            var evento = Evento.EventoFactory.NovoEventoCompleto(message.Id, message.Nome, message.DescricaoCurta,
+                                                                 message.DescricaoLonga, message.DataInicio, message.DataFim,
+                                                                 message.Gratuito, message.Valor, message.Online,
+                                                                 message.NomeEmpresa);
+
+            if (!EventoValido(evento)) return;
+
+            _eventoRepository.Atualizar(evento);
+
+            if (Commit())
+            {
+                _bus.RaiseEvent(new EventoAtualizadoEvent(message.Id, message.Nome, message.DescricaoCurta,
+                                                          message.DescricaoLonga, message.DataInicio, message.DataFim,
+                                                          message.Gratuito, message.Valor, message.Online,
+                                                          message.NomeEmpresa));
+            }
+        }
+
+        private bool EventoValido(Evento evento)
+        {
+            if (evento.EhValido()) return true;
+
+            NotificarValidacoesErro(evento.ValidationResult);
+            return false;
         }
     }
 }

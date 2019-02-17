@@ -116,5 +116,31 @@ namespace RFL.Eventos.IO.Domain.Eventos
         }
 
         #endregion
+
+        public static class EventoFactory
+        {
+            public static Evento NovoEventoCompleto(Guid id, string nome, string descCurta, string descLonga,
+                                                    DateTime dataInicio, DateTime dataFim, bool gratuito,
+                                                    decimal valor, bool online, string nomeEmpresa
+                                                    )
+                                                   
+            {
+                var evento = new Evento
+                {
+                    Id = id,
+                    Nome = nome,
+                    DescricaoCurta = descCurta,
+                    DescricaoLonga = descLonga,
+                    DataInicio = dataInicio,
+                    DataFim = dataFim,
+                    Gratuito = gratuito,
+                    Valor = valor,
+                    Online = online,
+                    NomeEmpresa = nomeEmpresa
+                };
+
+                return evento;
+            }
+        }
     }
 }

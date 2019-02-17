@@ -4,11 +4,13 @@ using System.Text;
 
 namespace RFL.Eventos.IO.Domain.Eventos.Events
 {
-    public class EventoRegistradoEvent : BaseEventoEvent
+    public class EventoAtualizadoEvent : BaseEventoEvent
     {
-        public EventoRegistradoEvent(
+        public EventoAtualizadoEvent(
             Guid id,
             string nome,
+            string descCurta,
+            string descLonga,
             DateTime dataInicio,
             DateTime dataFim,
             bool gratuito,
@@ -18,6 +20,8 @@ namespace RFL.Eventos.IO.Domain.Eventos.Events
         {
             Id = id;
             Nome = nome;
+            DescricaoCurta = descCurta;
+            DescricaoLonga = descLonga;
             DataInicio = dataInicio;
             DataFim = dataFim;
             Gratuito = gratuito;
