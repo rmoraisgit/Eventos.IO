@@ -1,5 +1,6 @@
 ﻿using RFL.Eventos.IO.Domain.Core.Bus;
 using RFL.Eventos.IO.Domain.Core.Events;
+using RFL.Eventos.IO.Domain.Core.Noitifications;
 using RFL.Eventos.IO.Domain.Eventos.Events;
 using RFL.Eventos.IO.Domain.Eventos.Repository;
 using RFL.Eventos.IO.Domain.Handlers;
@@ -12,15 +13,18 @@ namespace RFL.Eventos.IO.Domain.Eventos.Commands
 {
     public class EventoCommandHandler : CommandHandler,
         IHandler<RegistrarEventoCommand>,
-        IHandler<AtualizarEventoCommand>
+        IHandler<AtualizarEventoCommand>,
+        IHandler<RemoverEventoCommand>
     {
         private readonly IEventoRepository _eventoRepository;
         private readonly IUnitOfWork _uow;
         private readonly IBus _bus;
+        private readonly IDomainNotificationHandler<DomainNotification> _notifications;
 
         public EventoCommandHandler(IEventoRepository eventoRepository,
                                     IUnitOfWork uow,
-                                    IBus bus) : base(uow)
+                                    IBus bus,
+                                    IDomainNotificationHandler<DomainNotification> notifications) : base(uow, bus, notifications)
         {
             _eventoRepository = eventoRepository;
             _uow = uow;
@@ -60,6 +64,16 @@ namespace RFL.Eventos.IO.Domain.Eventos.Commands
                                                           message.DescricaoLonga, message.DataInicio, message.DataFim,
                                                           message.Gratuito, message.Valor, message.Online,
                                                           message.NomeEmpresa));
+            }
+        }
+
+        public void Handle(RemoverEventoCommand message)
+        {
+            _eventoRepository.Remover(message.Id);
+
+            if (Commit())
+            {
+                _bus.RaiseEvent(new EventoRemovidoEvent(message.Id));
             }
         }
 

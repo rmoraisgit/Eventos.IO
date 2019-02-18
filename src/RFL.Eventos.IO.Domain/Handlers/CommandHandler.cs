@@ -27,7 +27,7 @@ namespace RFL.Eventos.IO.Domain.Handlers
         {
             foreach (var erro in validationResult.Errors)
             {
-                _bus.RaiseEvent(new DomainNotification(erro.PropertyName, erro.ErrorMessage);
+                _bus.RaiseEvent(new DomainNotification(erro.PropertyName, erro.ErrorMessage));
             }
         }
 
